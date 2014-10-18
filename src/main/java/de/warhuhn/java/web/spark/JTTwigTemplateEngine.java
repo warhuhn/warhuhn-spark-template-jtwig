@@ -6,7 +6,7 @@ import spark.TemplateEngine;
 /**
  * Created by suigintou on 18.10.2014.
  */
-public class JTwigTemplateEngine extends TemplateEngine {
+public class JTTwigTemplateEngine extends TemplateEngine {
     @Override
     public String render(ModelAndView modelAndView) {
         return null;
