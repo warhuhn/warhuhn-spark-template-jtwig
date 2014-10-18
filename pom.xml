@@ -17,8 +17,8 @@
 
         <dependency>
             <groupId>com.lyncode</groupId>
-            <artifactId>jtwig</artifactId>
-            <version>3.0.2</version>
+            <artifactId>jtwig-core</artifactId>
+            <version>2.1.5</version>
         </dependency>
     </dependencies>
 </project>
