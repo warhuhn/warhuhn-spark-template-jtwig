@@ -8,7 +8,7 @@ import java.util.Map;
 import static spark.Spark.get;
 
 /**
- * Created by suigintou on 18.10.2014.
+ * Example usage for JtwigTemplateEngine.
  */
 public class JtwigTemplateExample {
     public static void main(String[] args) {

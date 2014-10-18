@@ -12,12 +12,15 @@ import spark.ModelAndView;
 import spark.TemplateEngine;
 
 /**
- * Created by suigintou on 18.10.2014.
+ * TemplateEngine for Spark based on Jtwig.
  */
 public class JtwigTemplateEngine extends TemplateEngine {
 
     // TODO: Needs a way to further configure Jtwig
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String render(ModelAndView modelAndView) {
         JtwigTemplate template = new JtwigTemplate(new ClasspathJtwigResource("templates/" + modelAndView.getViewName()));
