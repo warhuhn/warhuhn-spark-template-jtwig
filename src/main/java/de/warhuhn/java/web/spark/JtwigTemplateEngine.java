@@ -1,6 +1,7 @@
 package de.warhuhn.java.web.spark;
 
 import com.lyncode.jtwig.JtwigContext;
+import com.lyncode.jtwig.JtwigModelMap;
 import com.lyncode.jtwig.JtwigTemplate;
 import com.lyncode.jtwig.exception.ParseException;
 import com.lyncode.jtwig.exception.CompileException;
@@ -25,7 +26,7 @@ public class JtwigTemplateEngine extends TemplateEngine {
 
         try {
             // TODO: will break if the model is not a HashMap<String, Object>
-            result = template.output(new JtwigContext((com.lyncode.jtwig.JtwigModelMap) modelAndView.getModel()));
+            result = template.output(new JtwigContext(new JtwigModelMap().add((java.util.Map<String, Object>) modelAndView.getModel())));
         } catch (ParseException | CompileException | RenderException e) {
             throw new RuntimeIOException(e);
         }
