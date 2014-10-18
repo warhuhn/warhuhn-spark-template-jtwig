@@ -1,0 +1,6 @@
+Hello {% if model.gender == "m" %}
+    Mr.
+{% elseif model.gender == "f" %}
+    Mrs.
+{% endif %}
+ {{ model.name }}!
