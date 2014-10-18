@@ -10,16 +10,24 @@ Examples
 --------
 
 ### JtwigTemplateExample.java
-> final Map<String, Object> modelMap = new HashMap<>();
->
-> modelMap.put("gender", "f");
-> modelMap.put("name", "Merkel");
->
-> get("/hello", (rq, rs) -> new ModelAndView(modelMap, "hello.twig"), new JtwigTemplateEngine());
+``` java
+public class JtwigTemplateExample {
+    public static void main(String[] args) {
+        final Map<String, Object> modelMap = new HashMap<>();
+        
+        modelMap.put("gender", "f");
+        modelMap.put("name", "Merkel");
+        
+        get("/hello", (rq, rs) -> new ModelAndView(modelMap, "hello.twig"), new JtwigTemplateEngine());
+    }
+}
+```
 
 ### hello.twig
->  Hello {% if model.gender == "m" %}
->      Mr.
->  {% elseif model.gender == "f" %}
->      Mrs.
->  {% endif %} {{ model.name }}!
+``` twig
+Hello {% if model.gender == "m" %}
+    Mr.
+{% elseif model.gender == "f" %}
+    Mrs.
+{% endif %} {{ model.name }}!
+```
