@@ -31,9 +31,9 @@ import spark.TemplateEngine;
  */
 public class JtwigTemplateEngine extends TemplateEngine {
 
-    private String templateRoot = "templates/";
+    protected String templateRoot = "templates/";
 
-    private JtwigConfiguration jtwigConfiguration;
+    protected JtwigConfiguration jtwigConfiguration;
 
     /**
      * Default Constructor
