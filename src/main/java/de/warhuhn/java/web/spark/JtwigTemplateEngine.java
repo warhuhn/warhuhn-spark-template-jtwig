@@ -31,7 +31,9 @@ import spark.TemplateEngine;
  */
 public class JtwigTemplateEngine extends TemplateEngine {
 
-    JtwigConfiguration jtwigConfiguration;
+    private String templateRoot = "templates/";
+
+    private JtwigConfiguration jtwigConfiguration;
 
     /**
      * Default Constructor
@@ -50,11 +52,22 @@ public class JtwigTemplateEngine extends TemplateEngine {
     }
 
     /**
+     * Constructor to add your own JtwigConfiguration and own templateRoot for the templates.
+     *
+     * @param templateRoot       Root path in ClassPath pointing to the templates
+     * @param jtwigConfiguration Your customized JtwigConfiguration
+     */
+    public JtwigTemplateEngine(String templateRoot, JtwigConfiguration jtwigConfiguration) {
+        this.templateRoot = templateRoot;
+        this.jtwigConfiguration = jtwigConfiguration;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     public String render(ModelAndView modelAndView) {
-        ClasspathJtwigResource templateResource = new ClasspathJtwigResource("templates/" + modelAndView.getViewName());
+        ClasspathJtwigResource templateResource = new ClasspathJtwigResource(this.templateRoot + modelAndView.getViewName());
 
         JtwigTemplate template = new JtwigTemplate(templateResource, jtwigConfiguration);
 
