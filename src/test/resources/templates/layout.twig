@@ -1,4 +1,4 @@
-{# hello.twig #}
+{# layout.twig #}
 {#
  #
  # Copyright 2014 Jesko Karwasz
@@ -16,16 +16,17 @@
  # limitations under the License.
  #
  #}
-
-{# extend layout.twig for our basic layout #}
-{% extends "layout.twig" %}
-
-{# Example Twig template file. #}
-
-{% block additional %}
-            Hello {% if model.gender == "m" -%}
-                Mr.
-            {%- elseif model.gender == "f" -%}
-                Mrs.
-            {%- endif %} <b>{{ model.name }}</b>!
-{% endblock %}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JtwigTemplateEngine Example</title>
+    </head>
+    <body>
+        <h1>Welcome everybody!</h1>
+        <div>
+            {% block additional %}
+                You won't see this because the inherited hello.twig Template overwrites it!
+            {% endblock %}
+        </div>
+    </body>
+</html>

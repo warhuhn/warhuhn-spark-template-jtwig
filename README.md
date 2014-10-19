@@ -6,6 +6,8 @@ warhuhn-spark-template-jtwig is a Jtwig implementation for the Java Spark framew
 It currently only supports a Map<String, Object> as a model for the view and templates are to be required to be 
 inside a /templates folder in the Java classpath.
 
+When extending templates, the paths are relative to the current template.
+
 Examples
 --------
 
@@ -23,11 +25,67 @@ public class JtwigTemplateExample {
 }
 ```
 
+### layout.twig
+``` twig
+{# layout.twig #}
+{#
+ # ... LICENSE ...
+ #}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JtwigTemplateEngine Example</title>
+    </head>
+    <body>
+        <h1>Welcome everybody!</h1>
+        <div>
+            {% block additional %}
+                You won't see this because the inherited hello.twig Template overwrites it!
+            {% endblock %}
+        </div>
+    </body>
+</html>
+```
+
 ### hello.twig
 ``` twig
-Hello {% if model.gender == "m" %}
+{# hello.twig #}
+{#
+ # ... LICENSE ...
+ #}
+
+{# extend layout.twig for our basic layout #}
+{% extends "layout.twig" %}
+
+{# Example Twig template file. #}
+
+{% block additional %}
+
+Hello {% if model.gender == "m" -%}
     Mr.
-{% elseif model.gender == "f" %}
+{%- elseif model.gender == "f" -%}
     Mrs.
-{% endif %} {{ model.name }}!
+{%- endif %}
+ <b>{{ model.name }}</b>!
+
+{% endblock %}
+```
+
+
+### Output
+``` html
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JtwigTemplateEngine Example</title>
+    </head>
+    <body>
+        <h1>Welcome everybody!</h1>
+        <div>
+
+            Hello Mrs. <b>Merkel</b>!
+
+        </div>
+    </body>
+</html>
 ```
