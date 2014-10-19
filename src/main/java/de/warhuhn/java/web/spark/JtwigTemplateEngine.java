@@ -15,9 +15,9 @@
  */
 package de.warhuhn.java.web.spark;
 
-import com.lyncode.jtwig.JtwigContext;
 import com.lyncode.jtwig.JtwigModelMap;
 import com.lyncode.jtwig.JtwigTemplate;
+import com.lyncode.jtwig.configuration.JtwigConfiguration;
 import com.lyncode.jtwig.exception.ParseException;
 import com.lyncode.jtwig.exception.CompileException;
 import com.lyncode.jtwig.exception.RenderException;
@@ -31,20 +31,38 @@ import spark.TemplateEngine;
  */
 public class JtwigTemplateEngine extends TemplateEngine {
 
-    // TODO: Needs a way to further configure Jtwig
+    JtwigConfiguration jtwigConfiguration;
+
+    /**
+     * Default Constructor
+     */
+    public JtwigTemplateEngine() {
+        this.jtwigConfiguration = new JtwigConfiguration();
+    }
+
+    /**
+     * Constructor to add your own JtwigConfiguration
+     *
+     * @param jtwigConfiguration Your customized JtwigConfiguration
+     */
+    public JtwigTemplateEngine(JtwigConfiguration jtwigConfiguration) {
+        this.jtwigConfiguration = jtwigConfiguration;
+    }
 
     /**
      * {@inheritDoc}
      */
     @Override
     public String render(ModelAndView modelAndView) {
-        JtwigTemplate template = new JtwigTemplate(new ClasspathJtwigResource("templates/" + modelAndView.getViewName()));
+        ClasspathJtwigResource templateResource = new ClasspathJtwigResource("templates/" + modelAndView.getViewName());
+
+        JtwigTemplate template = new JtwigTemplate(templateResource, jtwigConfiguration);
 
         String result;
 
         try {
             // TODO: will break if the model is not a HashMap<String, Object>
-            result = template.output(new JtwigContext(new JtwigModelMap().add((java.util.Map<String, Object>) modelAndView.getModel())));
+            result = template.output(new JtwigModelMap().add((java.util.Map<String, Object>) modelAndView.getModel()));
         } catch (ParseException | CompileException | RenderException e) {
             throw new RuntimeIOException(e);
         }

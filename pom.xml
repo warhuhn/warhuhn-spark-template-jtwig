@@ -32,7 +32,13 @@
         <dependency>
             <groupId>com.lyncode</groupId>
             <artifactId>jtwig-core</artifactId>
-            <version>2.1.5</version>
+            <version>3.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lyncode</groupId>
+            <artifactId>jtwig-functions</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
 </project>
