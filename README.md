@@ -13,14 +13,28 @@ When extending templates, the paths are relative to the current template.
 
 You can now install this Template Engine via Maven (thanks to Jitpack.io).
 
-Just add the following Dependency to your ```pom.xml```:
+First, add the Jitpack.io repository to your ```pom.xml```:
 
 ``` xml
-<dependency>
-    <groupId>com.github.warhuhn</groupId>
-    <artifactId>warhuhn-spark-template-jtwig</artifactId>
-    <version>0.3</version>
-</dependency>
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+And add the following dependency to your ```pom.xml```:
+
+``` xml
+<dependencies>
+    <dependency>
+        <groupId>com.github.warhuhn</groupId>
+        <artifactId>warhuhn-spark-template-jtwig</artifactId>
+        <version>0.3</version> <!-- Use whatever release tag you want to use -->
+                               <!-- Works from all Tags up from 0.3 -->
+    </dependency>
+</dependencies>
 ```
 
 Examples
