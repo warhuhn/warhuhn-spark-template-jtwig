@@ -8,6 +8,21 @@ inside a /templates folder in the Java classpath.
 
 When extending templates, the paths are relative to the current template.
 
+*New* Maven (via jitpack.io)
+----------------------------
+
+You can now install this Template Engine via Maven (thanks to Jitpack.io).
+
+Just add the following Dependency to your ```pom.xml```:
+
+``` xml
+<dependency>
+    <groupId>com.github.warhuhn</groupId>
+    <artifactId>warhuhn-spark-template-jtwig</artifactId>
+    <version>0.3</version>
+</dependency>
+```
+
 Examples
 --------
 
